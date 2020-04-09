@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class BrowserUtilities {
     /**
@@ -100,5 +101,14 @@ public class BrowserUtilities {
             e.printStackTrace();
         }
         return path;
+    }
+    public static void switchwimdow(String title){
+        Set<String> windowHanles= Driver.getDriver().getWindowHandles();
+        for(String window : windowHanles){
+            Driver.getDriver().switchTo().window(window);
+            if(Driver.getDriver().getTitle().equals(title)){
+                break;
+            }
+        }
     }
 }
